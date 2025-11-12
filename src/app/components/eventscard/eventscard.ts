@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { EventService } from '../../services/eventservice';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Toast } from "primeng/toast";
 
 @Component({
   selector: 'app-eventscard',
@@ -21,8 +22,9 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
     CardModule,
     InputTextModule,
     DatePickerModule,
-    FileUploadModule
-  ],
+    FileUploadModule,
+    Toast
+],
   templateUrl: './eventscard.html',
   styleUrl: './eventscard.css',
   standalone: true,
@@ -49,6 +51,12 @@ export class Eventscard {
     if (!file) {
       this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please select a file' });
       return;
+    }else if(!this.newEvent.eventDateTime){
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please add event datatime' });
+    }else if(!this.newEvent.location){
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please add event location' });
+    }else if(!this.newEvent.description){
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please add event description' });
     }
 
     const formData = new FormData();

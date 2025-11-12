@@ -85,10 +85,12 @@
     padding: 0 !important;
 }
 
-/* @media (max-width: 600px) {
-  :host ::ng-deep .p-datepicker-panel {
-    width: 95vw !important;
-    left: 2.5vw !important;
-  }
-} */
+@media (max-width: 600px) {
+ .p-toast {
+  width: 90vw !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  top: 1rem !important;
+ }
+}
 

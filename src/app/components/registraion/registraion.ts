@@ -9,6 +9,7 @@ import { RegistraionService } from '../../services/registrationservice';
 import { Member} from '../../models/member';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-registraion',
@@ -17,7 +18,8 @@ import { MessageService } from 'primeng/api';
     InputTextModule,
     FileUploadModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    InputNumberModule 
   ],
   providers: [MessageService],
   templateUrl: './registraion.html',
@@ -49,8 +51,8 @@ export class Registraion implements OnInit {
 
   onSubmit() {
     if (this.form.invalid) {
-      this.form.markAllAsTouched(); // highlight all invalid fields
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill all required fields' });
+      //this.form.markAllAsTouched(); // highlight all invalid fields
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill all fields' });
       return;
     }
     console.log('Form Values:', this.form.value);
@@ -59,6 +61,7 @@ export class Registraion implements OnInit {
         ...this.form.value,
         fullName: `${this.form.value.name} ${this.form.value.surname}`,
         isActive: true,
+        batch: this.form.value.batch ? this.form.value.batch : 0,
         roleId: 3 // Default role ID for new members
       };
 
@@ -66,12 +69,14 @@ export class Registraion implements OnInit {
       this.registrationService.register(memberData).subscribe({
         next: () => {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registered successfully' });
-          this.ref?.close();
+          setTimeout(() => {
+            this.ref?.close();
+          }, 200);
         },
         error: err => console.error('Error:', err)
       });
     } else {
-      this.form.markAllAsTouched();
+      // this.form.markAllAsTouched();
     }
   }
 
@@ -81,8 +86,8 @@ export class Registraion implements OnInit {
     const allowedTypes = ['image/jpeg', 'image/jpg', 'application/pdf','image/png'];
     if (file && allowedTypes.includes(file.type)) {
       this.form.patchValue({ profilePhoto: file });
+      this.form.get('profilePhoto')?.markAsTouched();
       this.form.get('profilePhoto')?.updateValueAndValidity();
-
     } else {
       this.form.patchValue({ profilePhoto: null });
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid file type. Only JPEG, JPG,PNG and PDF are allowed.' });
@@ -93,6 +98,7 @@ export class Registraion implements OnInit {
   onFileRemove(event: any) {
     // Clear the form control when file is removed from FileUpload
     this.form.patchValue({ profilePhoto: null });
+    this.form.get('profilePhoto')?.markAsTouched();
     this.form.get('profilePhoto')?.updateValueAndValidity();
   }
 

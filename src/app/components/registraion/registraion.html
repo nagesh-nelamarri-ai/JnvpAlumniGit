@@ -2,64 +2,110 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
         <div class="field">
             <label for="name">Name</label>
-            <input id="name" type="text" pInputText formControlName="name" maxlength="100"/>
+            <input id="name" type="text" pInputText formControlName="name" maxlength="100" 
+            [ngClass]="{'is-invalid': (form.get('name')?.errors || (form.get('name')?.touched || form.get('name')?.dirty || form.get('name')?.invalid))}"
+            />
+             <span *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
+                <span *ngIf="form.get('name')?.errors?.['required']" class="error-message">First name is required.</span>
+            </span>
         </div>
 
         <div class="field">
             <label for="surname">Surname</label>
-            <input id="surname" type="text" pInputText formControlName="surname" maxlength="100" />
+            <input id="surname" type="text" pInputText formControlName="surname" maxlength="100"
+            [ngClass]="{'is-invalid': (form.get('surname')?.errors && (form.get('surname')?.touched || form.get('surname')?.dirty))}" />
+            <span *ngIf="form.get('surname')?.invalid && (form.get('surname')?.dirty || form.get('surname')?.touched)">
+                <span *ngIf="form.get('surname')?.errors?.['required']" class="error-message">Last name is required.</span>
+            </span>
         </div>
 
         <div class="field">
             <label for="mobile">Mobile</label>
-            <input id="mobile" type="text" pInputText formControlName="mobile" maxlength="15" />
+            <input id="mobile" type="text" pInputText formControlName="mobile" maxlength="15" 
+            [ngClass]="{'is-invalid': (form.get('mobile')?.errors && (form.get('mobile')?.touched || form.get('mobile')?.dirty))}"/>
+            <span *ngIf="form.get('mobile')?.invalid && (form.get('mobile')?.dirty || form.get('mobile')?.touched)">
+                <span *ngIf="form.get('mobile')?.errors?.['required']" class="error-message">Contact number is required.</span>
+                <span *ngIf="form.get('mobile')?.errors?.['pattern']" class="error-message">Numbers max 10 only allowed.</span>
+            </span>
         </div>
 
         <div class="field">
             <label for="email">Email</label>
-            <input id="email" type="text" pInputText formControlName="email" maxlength="100"/>
+            <input id="email" type="text" pInputText formControlName="email" maxlength="100" 
+            [ngClass]="{'is-invalid': (form.get('email')?.errors && (form.get('email')?.touched || form.get('email')?.dirty))}"/>
+            <span *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
+                <span *ngIf="form.get('email')?.errors?.['required']" class="error-message">Email is required.</span>
+                <span *ngIf="form.get('email')?.errors?.['pattern']" class="error-message">Not a valid pattern.</span>
+            </span>
         </div>
 
         <div class="field-row">
             <div class="field">
                 <label for="yearFrom">Year in JNV From</label>
-                <input id="yearFrom" class="year-field" type="text" pInputText formControlName="yearFrom" maxlength="5" />
+                <input id="yearFrom" class="year-field" type="text" pInputText formControlName="yearFrom"
+                    maxlength="5" [ngClass]="{'is-invalid': (form.get('yearFrom')?.errors && (form.get('yearFrom')?.touched || form.get('yearFrom')?.dirty))}" />
+                <span *ngIf="form.get('yearFrom')?.invalid && (form.get('yearFrom')?.dirty || form.get('yearFrom')?.touched)">
+                <span *ngIf="form.get('yearFrom')?.errors?.['required']" class="error-message">Joined in year is required.</span>
+                <span *ngIf="form.get('yearFrom')?.errors?.['pattern']" class="error-message">Numbers only allowed.</span>
+            </span>
             </div>
             <div class="field">
                 <label for="yearTo">To</label>
-                <input id="yearTo" class="year-field" type="text" pInputText formControlName="yearTo" maxlength="5" />
+                <input id="yearTo" class="year-field" type="text" pInputText formControlName="yearTo" maxlength="5" 
+                [ngClass]="{'is-invalid': (form.get('yearTo')?.errors && (form.get('yearTo')?.touched || form.get('yearTo')?.dirty))}"/>
+                <span *ngIf="form.get('yearTo')?.invalid && (form.get('yearTo')?.dirty || form.get('yearTo')?.touched)">
+                <span *ngIf="form.get('yearTo')?.errors?.['required']" class="error-message">Leave year is required.</span>
+                <span *ngIf="form.get('yearTo')?.errors?.['pattern']" class="error-message">Numbers only allowed.</span>
+            </span>
             </div>
         </div>
 
         <div class="field">
             <label for="batch">Batch</label>
-            <input id="batch" class="year-field" type="text" pInputText formControlName="batch" maxlength="3"/>
+            <p-inputnumber id="batch" class="year-field" formControlName="batch" [useGrouping]="false" [maxlength]="3" [allowEmpty]="true" />
         </div>
 
         <div class="field">
             <label for="profession">Profession</label>
-            <input id="profession" type="text" pInputText formControlName="profession" maxlength="50" />
+            <input id="profession" type="text" pInputText formControlName="profession" maxlength="50" 
+            [ngClass]="{'is-invalid': (form.get('profession')?.errors && (form.get('profession')?.touched || form.get('profession')?.dirty))}" />
+            <span *ngIf="form.get('profession')?.invalid && (form.get('profession')?.dirty || form.get('profession')?.touched)">
+                <span *ngIf="form.get('profession')?.errors?.['required']" class="error-message">Profession is required.</span>
+            </span>
         </div>
 
         <div class="field">
             <label for="location">Current Location</label>
-            <input id="location" type="text" pInputText formControlName="location" maxlength="50" />
+            <input id="location" type="text" pInputText formControlName="location" maxlength="50"
+             [ngClass]="{'is-invalid': (form.get('location')?.errors && (form.get('location')?.touched || form.get('location')?.dirty))}" />
+             <span *ngIf="form.get('location')?.invalid && (form.get('location')?.dirty || form.get('location')?.touched)">
+                <span *ngIf="form.get('location')?.errors?.['required']" class="error-message">Current locaton is required.</span>
+            </span>
         </div>
 
         <div class="field">
             <label for="profilePhoto">Profile Photo</label>
-            <p-fileupload #fu mode="advanced" name="profilePhoto" showUploadButton="false"
-                chooseLabel="Choose" chooseIcon="pi pi-upload" maxFileSize="300000" accept=".jpg,.jpeg,.pdf,.png"
-                (onSelect)="onFileSelect($event)" (onRemove)="onFileRemove($event)">
+            <p-fileupload #fu mode="advanced" name="profilePhoto" showUploadButton="false" chooseLabel="Choose"
+                chooseIcon="pi pi-upload" maxFileSize="300000" accept=".jpg,.jpeg,.pdf,.png"
+                (onSelect)="onFileSelect($event)" (onRemove)="onFileRemove($event)"
+                [ngClass]="{'is-invalid': (form.get('profilePhoto')?.errors && (form.get('profilePhoto')?.touched || form.get('profilePhoto')?.dirty))}">
             </p-fileupload>
+            <span *ngIf="form.get('profilePhoto')?.invalid && (form.get('profilePhoto')?.dirty || form.get('profilePhoto')?.touched)">
+                <span *ngIf="form.get('profilePhoto')?.errors?.['required']" class="error-message">Profile photo is required.</span>
+            </span>
         </div>
+
         <div class="field">
             <label for="comments">Description</label>
-            <textarea id="comments" pTextarea formControlName="comments" maxlength="500"></textarea>
+            <textarea id="comments" pTextarea formControlName="comments" maxlength="500"
+            [ngClass]="{'is-invalid': (form.get('comments')?.errors && (form.get('comments')?.touched || form.get('comments')?.dirty))}"></textarea>
+            <span *ngIf="form.get('comments')?.invalid && (form.get('comments')?.dirty || form.get('comments')?.touched)">
+                <span *ngIf="form.get('comments')?.errors?.['required']" class="error-message">About you is required.</span>
+            </span>
         </div>
 
         <div class="submit-row">
-            <button type="submit" pButton label="Register"></button>
+            <button type="submit" pButton label="Register" [disabled]="!form.valid"></button>
         </div>
     </form>
 </div>

@@ -77,9 +77,9 @@ export class Homecontent implements OnInit {
       description: 'President, Alumni Association'
     },
     {
-      name: 'Jane Smith',
-      photo: 'assets/gallery/Alumni_Invitation.jpg',
-      description: 'Alumni Secretary'
+      name: 'Millennium Batch (2000 - 2007)',
+      photo: 'assets/logo/Alumni_25_Logo.jpg',
+      description: 'Alumni 2025 Host'
     }
   ];
 

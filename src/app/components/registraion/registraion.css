@@ -78,6 +78,14 @@
   font-weight: bold;
 }
 
+/* form validation error styles */
+.error-message {
+  color: rgb(247, 106, 106);
+}
+
+
+/* Responsive adjustments */
+
 @media (max-width: 600px) {
   .form-container {
     padding: 1rem;
@@ -99,4 +107,13 @@
     max-width: none !important;
     max-height: none !important;
   }
+}
+
+@media (max-width: 600px) {
+ .p-toast {
+  width: 90vw !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  top: 1rem !important;
+ }
 }
