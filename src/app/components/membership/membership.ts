@@ -5,6 +5,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
+import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 
@@ -15,7 +16,7 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     InputTextModule,
     ToastModule,
-    FormsModule],
+    FormsModule, FieldsetModule],
   templateUrl: './membership.html',
   styleUrl: './membership.css',
   standalone: true,
@@ -23,6 +24,7 @@ import { ToastModule } from 'primeng/toast';
 })
 
 export class Membership {
+
   qrCodeUrl = 'assets/gallery/QR-Code.jpg';
   showDialog = false;
   showFormDialog = false;
@@ -43,10 +45,19 @@ export class Membership {
     phone: '',
     membershipType: ''
   };
-constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService) { }
 
   showQrDialog() {
     this.showDialog = true;
+  }
+
+  DownloadFile(val: number) {
+    let filename = '';
+    filename = val == 1 ? 'Registration_certificate.pdf' : 'BYE-LAWS OF ALUMNI.pdf' ;
+    const a = document.createElement('a'); 
+     a.href = 'assets/gallery/' + filename;
+    a.download = filename;
+    a.click();
   }
 
 }

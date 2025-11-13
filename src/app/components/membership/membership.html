@@ -60,6 +60,18 @@
         <p><strong>Account No:</strong> {{ bankDetails.accountNumber }}</p>
         <p><strong>IFSC:</strong> {{ bankDetails.ifsc }}</p>
         <p><strong>Bank:</strong> {{ bankDetails.bank }}</p>
+      
+        <div>
+          <p-fieldset legend="Alumni Registration Documents">
+            <p class="m-0">
+              <span>Registration Certificate : </span> <span><a href="javascript: void(0);" (click)="DownloadFile(1)" style="text-decoration: none; color: red;" >Registration_Certificate.pdf</a></span>
+            </p>
+            <p class="m-0">
+              <span>Bye Laws of Alumni : </span> <span><a href="javascript: void(0);" (click)="DownloadFile(2)" style="text-decoration: none;color: red;">Bye_Laws_of_Alumni.pdf</a></span>
+            </p>
+          </p-fieldset>
+        </div>
+      
       </div>
 
       <div class="qr-section" (click)="showQrDialog()">

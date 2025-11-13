@@ -109,8 +109,8 @@
 
 @media (max-width: 480px) {
   .member-card {
-    flex: 0 0 130px;
-    min-width: 240px;
+    flex: 0 0 270px;
+    min-width: 270px;
   }
   .member-info h4 {
     font-size: 1rem;

@@ -40,7 +40,8 @@ export class Members implements OnInit {
           name: member.fullName || '',
           designation: 'Member',
           image: this.apiUrl + member.filePath,
-          year: member.yearFrom ? member.yearFrom.toString() : ''
+          year: member.yearFrom ? member.yearFrom.toString() : '',
+          toYear: member.yearTo ? member.yearTo.toString() : ''
         }));
 
         this.alumniMembers = data.filter(x => x.yearFrom == 2000 || x.yearTo == 2007).map(member => ({
@@ -56,7 +57,7 @@ export class Members implements OnInit {
 
   loadMembersData() {
     this.associationMembers = [
-      { name: 'Papaiah Varla', designation: 'President', image: 'assets/gallery/Papaiah.jpg', year: '1988', toYear: '1995' },
+      { name: 'Papaiah Varla', designation: 'President', image: 'assets/gallery/Papaiah.jpg', year: '1988', toYear: '1995' }
     ];
 
   }

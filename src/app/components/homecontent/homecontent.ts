@@ -57,16 +57,16 @@ export class Homecontent implements OnInit {
                 title: 'Gallery Image 3'
             },
             {
-                itemImageSrc: 'assets/gallery/Photo_2.jpg',
-                thumbnailImageSrc: 'assets/gallery/Photo_2.jpg',
-                alt: 'Image 2',
-                title: 'Gallery Image 2'
+                itemImageSrc: 'assets/gallery/Photo_4.jpg',
+                thumbnailImageSrc: 'assets/gallery/Photo_4.jpg',
+                alt: 'Image 4',
+                title: 'Gallery Image 4'
             },
              {
-                itemImageSrc: 'assets/gallery/Photo_3.jpg',
-                thumbnailImageSrc: 'assets/gallery/Photo_3.jpg',
-                alt: 'Image 3',
-                title: 'Gallery Image 3'
+                itemImageSrc: 'assets/gallery/Photo_5.jpg',
+                thumbnailImageSrc: 'assets/gallery/Photo_5.jpg',
+                alt: 'Image 5',
+                title: 'Gallery Image 5'
             }
     ];
 
@@ -74,12 +74,14 @@ export class Homecontent implements OnInit {
     {
       name: 'Papaiah Varla',
       photo: 'assets/gallery/Papaiah.jpg',
-      description: 'President, Alumni Association'
+      description: 'President, Alumni Association',
+      batch: 'Batch of (1988 - 1995)'
     },
     {
       name: 'Millennium Batch (2000 - 2007)',
       photo: 'assets/logo/Alumni_25_Logo.jpg',
-      description: 'Alumni 2025 Host'
+      description: 'Alumni 2025 Host',
+      batch:''
     }
   ];
 

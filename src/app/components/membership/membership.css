@@ -111,7 +111,7 @@
   flex: 1;
   min-width: 280px;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1;
 }
 
 .qr-section {
@@ -167,4 +167,12 @@
   justify-content: flex-end;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+::ng-deep .p-fieldset-legend-label {
+    color: green;
+}
+
+::ng-deep .p-fieldset {
+  width: fit-content;
 }
