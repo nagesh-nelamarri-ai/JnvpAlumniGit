@@ -45,6 +45,13 @@
   cursor: pointer;
 }
 
+.event-poster-dialog{
+  width: 680px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .description-section {
   flex: 1;
 }
@@ -79,20 +86,26 @@
     align-items: center;
     text-align: center;
   }
-
   .poster-section {
     flex: none;
   }
 
   .event-poster {
     width: 100%;
-    max-width: 250px;
+    /* max-width: 250px; */
     height: auto;
   }
-
+  .event-poster-dialog{
+    width: 100%;
+    height: auto;
+  }
   .description-section {
     margin-top: 0.5rem;
   }
+}
+
+::ng-deep .p-dialog-header {
+  padding:0 !important;
 }
 
 /* Grid layout breakpoints */
@@ -125,4 +138,3 @@
     min-width: 295px !important;
   } 
 }
-

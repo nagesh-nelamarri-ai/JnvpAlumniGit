@@ -3,7 +3,7 @@
     <div class="slider">
       <!-- <theme-switcher></theme-switcher> -->
       <p-galleria [value]="images" [showIndicators]="true" [showThumbnails]="false" [changeItemOnIndicatorHover]="true"
-        [containerStyle]="{'max-width': '680px', 'margin': 'auto'}" [autoPlay]="true" [circular]="true" [numVisible]="5">
+        [containerStyle]="{'margin': '1rem'}" [autoPlay]="true" [circular]="true" [numVisible]="5">
         <ng-template #item let-item>
           <img [src]="item.itemImageSrc" class="galleria-image" />
         </ng-template>

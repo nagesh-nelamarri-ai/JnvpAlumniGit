@@ -62,12 +62,7 @@ export class Homecontent implements OnInit {
                 alt: 'Image 4',
                 title: 'Gallery Image 4'
             },
-             {
-                itemImageSrc: 'assets/gallery/Photo_5.jpg',
-                thumbnailImageSrc: 'assets/gallery/Photo_5.jpg',
-                alt: 'Image 5',
-                title: 'Gallery Image 5'
-            }
+             
     ];
 
     this.members = [
