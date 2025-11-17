@@ -8,10 +8,11 @@ import { Member } from '../../models/member';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
+import { BadgeModule } from 'primeng/badge';
 
 @Component({
   selector: 'app-members',
-  imports: [CommonModule, CardModule, ProgressSpinnerModule, AutoCompleteModule, FormsModule ],
+  imports: [CommonModule, CardModule, ProgressSpinnerModule, AutoCompleteModule, FormsModule, BadgeModule ],
   templateUrl: './members.html',
   styleUrl: './members.css',
   standalone: true
@@ -24,7 +25,7 @@ export class Members implements OnInit {
   allMembers: Member[] = [];
   private readonly apiUrl: string;
   isLoading: boolean = false;
-  yearList: string[] = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007'];
+  yearList: string[] = [];
   year: string = '';
   filteredYears: string[] = [];
 
@@ -39,13 +40,15 @@ export class Members implements OnInit {
 
   loadRegisteredMembers() {
     this.isLoading = true;
-      this.isLoading = false;
 
     this.registrationService.getAll().subscribe(data => {
       console.log('get all members ', data.length);
       this.isLoading = false;
       if (data) {
         this.allMembers = data;
+        this.yearList = Array.from(new Set(data.map(x => x.yearFrom?.toString() || '').filter(x => x !== ''))).sort();
+        console.log('year list ', this.yearList);
+
         this.registeredMembers = data.filter(x => x.roleId != 2).map(member => ({
           name: member.fullName || '',
           designation: 'Member',
@@ -80,5 +83,24 @@ export class Members implements OnInit {
    console.log('search year', event.query);
   }
 
+  filterMembers() {
+    if (this.year) {
+      this.registeredMembers = this.allMembers.filter(x => x.roleId != 2).map(member => ({
+          name: member.fullName || '',
+          designation: 'Member',
+          image: this.apiUrl + member.filePath,
+          year: member.yearFrom ? member.yearFrom.toString() : '',
+          toYear: member.yearTo ? member.yearTo.toString() : ''
+        })).filter(x => x.year == this.year);
+    } else {
+      this.registeredMembers = this.allMembers.filter(x => x.roleId != 2).map(member => ({
+          name: member.fullName || '',
+          designation: 'Member',
+          image: this.apiUrl + member.filePath,
+          year: member.yearFrom ? member.yearFrom.toString() : '',
+          toYear: member.yearTo ? member.yearTo.toString() : ''
+        }));
+    } 
+  }
 
 }

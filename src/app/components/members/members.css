@@ -75,6 +75,9 @@
   transform: translateY(-5px);
 }
 
+.margin-top-2 {
+  margin-top: 2rem !important;
+}
 /* Image styling */
 .member-image {
   width: 65%;
@@ -113,7 +116,13 @@
   width: 200px;                   /* Adjust width of the dropdown */
 }
 
+::ng-deep .p-autocomplete:has(.p-inputtext-sm) .p-autocomplete-dropdown {
+  width: 1.3rem !important;
+}
+
 /* dropdown end */
+
+
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
@@ -125,6 +134,7 @@
     height: 220px;
     width: 100%;
   }
+  
 }
 
 @media (max-width: 480px) {
@@ -137,5 +147,12 @@
   }
   .member-info p {
     font-size: 0.8rem;
+  }
+  
+}
+
+@media screen {
+  .margin-top-2 {
+    margin-top: 2rem !important;
   }
 }
