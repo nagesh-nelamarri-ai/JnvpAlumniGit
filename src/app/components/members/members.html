@@ -1,19 +1,5 @@
 <div class="member-section">
-  <h2 class="association-header">Association Members <p-badge [value]="allMembers.length" severity="success" badgeSize="large"></p-badge></h2>
-    <p-progress-spinner ariaLabel="loading" *ngIf="isLoading" />
-  <div class="scroll-container margin-top-2" *ngIf="!isLoading">
-    <p-card *ngFor="let member of associationMembers" class="member-card">
-      <img [src]="member.image" alt="{{member.name}}" class="member-image profile-photo">
-      <div class="member-info">
-        <h4>{{member.name}}</h4>
-         <span>{{member.designation}}</span> <p>Batch of {{member.year}} - {{member.toYear}}</p>
-      </div>
-    </p-card>
-  </div>
-</div>
-
-<div class="member-section">
-  <h2 class="alumni-header">Hosting Batch Members <p-badge [value]="alumniMembers.length" severity="success" badgeSize="large"></p-badge></h2>
+  <h2 class="alumni-header">Hosting Batch Members <p-badge [value]="alumniMembers.length" severity="success" badgeSize="large"></p-badge><p-badge [value]="allMembers.length" severity="success" badgeSize="large" style="margin-left: 10px;"></p-badge></h2>
     <p-progress-spinner ariaLabel="loading" *ngIf="isLoading" />
   <div class="scroll-container" *ngIf="!isLoading">
     <p-card *ngFor="let member of alumniMembers" class="member-card" >

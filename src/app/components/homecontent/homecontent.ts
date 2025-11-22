@@ -72,6 +72,12 @@ export class Homecontent implements OnInit {
       description: 'President, Alumni Association',
       batch: 'Batch of (1988 - 1995)'
     },
+     {
+      name: 'Dr.Ravi Kumar Kusumaraju',
+      photo: 'assets/gallery/RaviKumar.jpg',
+      description: 'General Secretary, Alumni Association',
+      batch: 'Batch of (1995 - 2002)'
+    },
     {
       name: 'Millennium Batch (2000 - 2007)',
       photo: 'assets/logo/Alumni_25_Logo.jpg',
