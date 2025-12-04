@@ -1,13 +1,13 @@
 <div class="events-container mar-top-1">
   <!-- Add Event Button -->
-  <div class="flex justify-content-end mb-3">
+  <!-- <div class="flex justify-content-end mb-3">
     <p-button label="Add Event" icon="pi pi-plus" [raised]="true" severity="info" variant="text"
       (click)="addEventCard()" />
-  </div>
+  </div> -->
 
   <!-- Event Cards Grid -->
   <div class="events-grid">
-    <p-card *ngFor="let event of events"
+    <p-card *ngFor="let event of eventList"
       class="event-card shadow-3 border-round-lg overflow-hidden">
 
       <div class="p-3">
@@ -17,35 +17,16 @@
         <p class="subtitle">
           <i class="pi pi-map-marker" style="color:#a0522d; margin-right: 6px;"></i>
           <span class="location">{{ event.location }}</span>
-        </p>
-
-        <p class="subtitle">
-          <i class="pi pi-calendar" style="color:#a0522d; margin-right: 6px;"></i>
+          <i class="pi pi-calendar" style="color:#a0522d; margin-left: 10px;"></i>
           {{ event.eventDateTime | date:'dd-MM-yyyy hh:mm a' }}
         </p>
 
         <!-- Main Content: Poster on left, Description on right -->
         <div class="event-content">
           <!-- Poster -->
-          <div class="poster-section">
-            <img [src]="getFullPath(event.filePath!)" alt="Event Poster"
+            <img [src]="event.filePath" alt="Event Poster"
               class="event-poster border-round-lg shadow-2"
               (click)="showImage(event)" title="Click to enlarge" />
-          </div>
-
-          <!-- Description -->
-          <div class="description-section">
-            <p class="event-description text-700 line-height-3">
-              {{ event.description }}
-            </p>
-          </div>
-        </div>
-
-        <!-- Footer Buttons -->
-        <div class="flex text-end">
-          <p-button label="Join Now" icon="pi pi-user-plus"
-            styleClass="p-button-rounded p-button-primary"
-            (click)="openGoogleForm()"></p-button>
         </div>
       </div>
     </p-card>
