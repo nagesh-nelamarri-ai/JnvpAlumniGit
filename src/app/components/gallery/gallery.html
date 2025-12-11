@@ -1,1 +1,30 @@
-<p>Gallery Work!</p>
+<div class="gallery-container">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button 
+      [class.active]="activeTab === 'photos'" 
+      (click)="activeTab='photos'">Photos</button>
+
+    <button 
+      [class.active]="activeTab === 'videos'" 
+      (click)="activeTab='videos'">Videos</button>
+  </div>
+
+  <!-- Photos Grid -->
+  <div *ngIf="activeTab === 'photos'" class="photo-grid">
+    <div class="photo-card" *ngFor="let p of photos">
+       <a [href]="getDriveViewUrl(p.id)" target="_blank" rel="noopener">
+      <img [src]="getPublicFileUrl(p.id)" [alt]="p.name" loading="lazy">
+    </a>
+    </div>
+  </div>
+
+  <!-- Videos Grid -->
+  <div *ngIf="activeTab === 'videos'" class="video-grid">
+    <div class="video-card" *ngFor="let v of videos">
+      <iframe [src]="getVideoEmbed(v.id)" allow="autoplay" loading="lazy"></iframe>
+    </div>
+  </div>
+
+</div>

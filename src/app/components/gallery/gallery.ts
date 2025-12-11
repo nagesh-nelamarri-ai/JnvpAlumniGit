@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
+import { GoogleDriveService } from '../../services/google-drive-service';
 
 @Component({
   selector: 'app-gallery',
@@ -12,23 +13,58 @@ import { TooltipModule } from 'primeng/tooltip';
     ButtonModule,
     CardModule,
     DialogModule,
-    TooltipModule],
+    TooltipModule, CommonModule],
   templateUrl: './gallery.html',
   styleUrl: './gallery.css',
   standalone: true
 })
-export class Gallery {
+export class Gallery implements OnInit {
 
-  displayImageModal = false;
 
-  imageUrl = 'assets/gallery/Alumni_Invitation.jpg' // Replace with dynamic source if needed
+  PHOTOS_FOLDER_ID = 'YOUR_PHOTOS_FOLDER_ID';
+  VIDEOS_FOLDER_ID = 'YOUR_VIDEOS_FOLDER_ID';
 
-  showImage() {
-    this.displayImageModal = true;
+  photos: any[] = [];
+  videos: any[] = [];
+
+  activeTab: 'photos' | 'videos' = 'photos';
+
+  constructor(private gdrive: GoogleDriveService) { }
+
+  ngOnInit() {
+    this.loadPhotos();
+    // this.loadVideos();
   }
 
-  hideImage() {
-    this.displayImageModal = false;
+  loadPhotos() {
+    this.PHOTOS_FOLDER_ID = '1T5ITTT9xsJGe7RIl-qGbVdja-ISAkn8l';
+    this.gdrive.getFilesFromFolder(this.PHOTOS_FOLDER_ID).subscribe(res => {
+      this.photos = res.files;
+    });
   }
+
+  loadVideos() {
+    this.gdrive.getFilesFromFolder(this.VIDEOS_FOLDER_ID).subscribe(res => {
+      this.videos = res.files;
+    });
+  }
+
+  getPublicFileUrl(fileId: string) {
+    return `https://lh3.googleusercontent.com/d/${fileId}=s400`;
+  }
+
+  getDriveViewUrl(fileId: string) {
+    return `https://drive.google.com/file/d/${fileId}/view`;
+  }
+
+  //  getPublicFileUrl(fileId: string): string {
+  //   return `https://drive.google.com/uc?id=${fileId}`;
+  // }
+
+  getVideoEmbed(fileId: string): string {
+    return `https://drive.google.com/file/d/${fileId}/preview`;
+  }
+
 
 }
+

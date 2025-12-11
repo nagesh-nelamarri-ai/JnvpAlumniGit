@@ -35,7 +35,7 @@ export class Members implements OnInit {
 
   ngOnInit(): void {
     this.loadMembersData();
-    this.loadRegisteredMembers();
+    // this.loadRegisteredMembers();
   }
 
   loadRegisteredMembers() {
