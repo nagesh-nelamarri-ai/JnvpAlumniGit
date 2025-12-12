@@ -36,7 +36,9 @@
   border-radius: 8px;
   margin-bottom: 10px;
 }
-
+.magin-left-1{
+  margin-left: 1rem;
+}
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
